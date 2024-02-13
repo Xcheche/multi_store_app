@@ -22,6 +22,18 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
+  final PageController _pageController = PageController();
+  @override
+  void initState() {
+    for (var element in items) {
+      element.isSelected = false;
+    }
+    setState(() {
+      items[0].isSelected = true;
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -57,12 +69,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
-              for (var element in items) {
-                element.isSelected = false;
-              }
-              setState(() {
-                items[index].isSelected = true;
-              });
+              _pageController.animateToPage(index,
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.bounceInOut);
             },
             child: Container(
               color: items[index].isSelected == true
@@ -84,6 +93,65 @@ class _CategoryScreenState extends State<CategoryScreen> {
       height: size.height * 0.8,
       width: size.width * 0.8,
       color: Colors.white,
+      child: PageView(
+        controller: _pageController,
+        onPageChanged: (value) {
+          for (var element in items) {
+            element.isSelected = false;
+          }
+          setState(() {
+            items[value].isSelected = true;
+          });
+        },
+        scrollDirection: Axis.vertical,
+        children: const [
+          Center(
+            child: Text(
+              'men category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'women category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'shoes category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'bags category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'electronics category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'accessories category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'home & garden category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'kids category',
+            ),
+          ),
+          Center(
+            child: Text(
+              'beauty category',
+            ),
+          )
+        ],
+      ),
     );
   }
 }
