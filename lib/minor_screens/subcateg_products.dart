@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class SubCategProducts extends StatelessWidget {
-<<<<<<< HEAD
   final String mainCategName;
   final String subCategName;
   const SubCategProducts(
@@ -32,12 +31,5 @@ class SubCategProducts extends StatelessWidget {
         child: Text(mainCategName),
       ),
     );
-=======
-  const SubCategProducts({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
->>>>>>> cf2bd5c1a91a65f3c7aeee2bfde4eb6a75cf04f3
   }
 }
