@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:multi_store_app/minor_screens/subcateg_products.dart';
 
 import '../minor_screens/subcateg_products.dart';
 import '../utilities/categ_list.dart';
+
 
 class MenCategory extends StatelessWidget {
   const MenCategory({Key? key}) : super(key: key);
@@ -29,6 +31,7 @@ class MenCategory extends StatelessWidget {
               men.length,
               (index) {
                 return GestureDetector(
+<<<<<<< HEAD
                   onTap: () {
                     Navigator.push(
                       context,
@@ -49,6 +52,22 @@ class MenCategory extends StatelessWidget {
                           image: AssetImage('images/men/men$index.jpg'),
                         ),
                       ),
+=======
+                  onTap: (() {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) {
+                      =>const  SubCategProducts();
+                    }));
+                  },
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 70,
+                        width: 70,
+                        child: Image(
+                          image: AssetImage('images/men/men$index.jpg'),
+                        ),
+                      ),
+>>>>>>> cf2bd5c1a91a65f3c7aeee2bfde4eb6a75cf04f3
                       Text(men[index]),
                     ],
                   ),
